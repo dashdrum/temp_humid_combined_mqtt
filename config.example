@@ -1,0 +1,86 @@
+//  Edit this file with your settings and save as 'config.h'
+
+#define CONFIG_HOST          "host"           //  The host name is also used as the device name - eg. office, living_room
+#define CONFIG_FRIENDLY_NAME "Thing"          //  Used to give a pretty name to each sensor - eg. Office, Living Room  (spaces are allowed)
+#define CONFIG_DEVICE_MODEL  "Wemos D1 Mini"  //  Board used for the project
+
+// PINS
+#define CONFIG_DHTPIN D4 // The DHT22 data pin
+
+// Sleep
+const PROGMEM uint16_t CONFIG_SLEEPING_TIME_IN_SECONDS = 900; // 15 minutes x 60 seconds - Time to sleep between readings
+
+// OTA - path and login info for firmware upgrade
+#define CONFIG_OTA_PATH "/WebFirmwareUpgrade"
+#define CONFIG_OTA_USER "<user>"
+#define CONFIG_OTA_PASS "<password>"
+
+// MQTT Connection - Enter your MQTT broker info here
+#define CONFIG_MQTT_HOST "<IP_or_host_name>"
+#define CONFIG_MQTT_PORT 1883 // Usually 1883
+#define CONFIG_MQTT_USER "<user>"
+#define CONFIG_MQTT_PASS "<password>"
+
+// Topics - These topics are used to communicate to/from your device. Note that the value of <host> should be unique for your setup.
+
+// MQTT Topics
+#define CONFIG_MQTT_BATT_TOPIC       "<host>/battery/state"
+#define CONFIG_MQTT_TEMP_TOPIC       "<host>/temperature/state"
+#define CONFIG_MQTT_HUMID_TOPIC      "<host>/humidity/state"
+#define CONFIG_MQTT_PRESS_TOPIC      "<host>/pressure/state"
+#define CONFIG_MQTT_WIFI_TOPIC       "<host>/wifi_signal/state"
+#define CONFIG_MQTT_AVAILABILITY_TOPIC    "<host>/availability"  // Note that availability is not used with deep sleep
+#define CONFIG_MQTT_RESTART_STATE_TOPIC   "<host>/switch/restart/state"
+
+// Topics used for the config message to Home Assistant.  "homeassistant/" is the default prefix for config.  Change if needed.
+
+// MQTT Config Topics
+#define CONFIG_MQTT_RESTART_CONFIG_TOPIC "homeassistant/switch/<host>/<host>_restart/config"
+#define CONFIG_MQTT_TEMP_CONFIG_TOPIC "homeassistant/sensor/<host>/<host>_temperature/config"
+#define CONFIG_MQTT_HUMID_CONFIG_TOPIC "homeassistant/sensor/<host>/<host>_humidity/config"
+#define CONFIG_MQTT_PRESS_CONFIG_TOPIC "homeassistant/sensor/<host>/<host>_pressure/config"
+#define CONFIG_MQTT_BATT_CONFIG_TOPIC "homeassistant/sensor/<host>/<host>_battery/config"
+#define CONFIG_MQTT_WIFI_CONFIG_TOPIC "homeassistant/sensor/<host>/<host>_wifi_signal/config"
+
+// Subscribe topics and response values
+
+// MQTT Subscriptions
+#define CONFIG_MQTT_DISABLE_DEEP_SLEEP_TOPIC "<host>/defeat_sleep/state"
+#define CONFIG_MQTT_DISABLE_DEEP_SLEEP "on"
+#define CONFIG_MQTT_ENABLE_DEEP_SLEEP  "off"
+
+#define CONFIG_MQTT_RESTART_COMMAND_TOPIC "<host>/switch/restart/command"
+#define CONFIG_MQTT_RESTART_DEVICE     "ON"
+#define CONFIG_MQTT_NO_RESTART_DEVICE  "OFF"
+
+// Enables Serial and print statements
+#define CONFIG_DEBUG true
+
+
+// Sensor type
+#define DHT_22 1
+#define SHT_3X 2
+#define BME_280 3
+
+#define CONFIG_SENSOR_TYPE <sensor_type>  // Change to indicate the sensor installed using the codes above.
+
+
+// External - Always returns 100%
+#define EX 1
+// AA Batteries - MAX 4.5V
+#define AAB 2
+// AAA Batteries - MAX 4.5V
+#define AAA 3
+// Litium Ion - MAX 4.2V
+#define LI 4
+// Other - returns raw sensor value
+#define OT 0
+
+#define CONFIG_POWER_SOURCE <power_source> // Change to indicate the power source using the codes above.
+
+// Resistor value
+#define R220K 1
+#define R100K 2
+
+#define CONFIG_RESISTOR_VALUE  <resistor_value>  // Change to indicate the resistor in use. Best is to install a 220K resistor
+
