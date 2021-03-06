@@ -1,4 +1,4 @@
-#temp\_humid\_combined\_mqtt#
+# temp\_humid\_combined\_mqtt #
 
 By Dan Gentry, 2021
 
@@ -8,7 +8,7 @@ This version can handle three different common sensors, and could be augmented t
 
 While this has only been tested with an ESP8266 (Wemos D1 Mini), I am confident that an ESP32 could also be used.  If changes are needed, please let me know.
 
-##Notes:##
+## Notes: ##
 
 My go to hardware is a Wemos D1 Mini with an SHT-30 shield.  When atmospheric pressure is also needed, I've substituted the BMP/BME 280.  The DHT-22 is also supported.  With both the SHT and BMP, I have used the default SCL and SDA pins.  You'll have to make modifications if other pins are used.  The DHT-22 data wire is normally connected to D4, but I don't know what pin a DHT-22 shield would use.
 
@@ -18,7 +18,7 @@ On some builds, I have included a lithium ion battery with a solar panel to char
 
 MQTT discovery for Home Assistant is also included.  If discovery is enabled on the Hass server, the device will automatically show up in the device list when it powers up.
 
-##config.h:##
+## config.h: ##
 
 Copy the config.example file as config.h, them modify the settings to your needs.
 
@@ -27,7 +27,7 @@ Copy the config.example file as config.h, them modify the settings to your needs
 1. For Sensor Type and Power Source, use the constants defined just above to indicate the sensor and power source in use.  An example:
 **#define CONFIG\_SENSOR\_TYPE SHT_3X**
 
-##To Do:##
+## To Do: ##
 
 1. I don't have all of the battery types configured yet to give the best percentage of max voltage.
 1. The MQTT availability and Last Will and Testement code is present, but commented becuase it is not used with deep sleep.  It is there for documentation purposes, but I should probably take it out.
