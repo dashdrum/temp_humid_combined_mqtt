@@ -256,9 +256,7 @@ float getBatteryLevel(){
   } else if (CONFIG_POWER_SOURCE == AAA){
     divisor = 1024.0f;
   } else if (CONFIG_POWER_SOURCE == LI){
-    if(CONFIG_RESISTOR_VALUE == R220K){
-      divisor = 1005.0f;
-    }
+    divisor = 1008.01701f;
   } else {
     return batt;
   }
@@ -382,7 +380,6 @@ void handleSensors(){
     h = bme280.getHumidity();
     // The 280 has a pressure sensor
     p = bme280.getPressure()/100.0;
-    
   }
 
   b = getBatteryLevel();
@@ -413,6 +410,7 @@ void loop() {
   
   if(now < lastReport) lastReport = now;
 
+  //  Report every 60s.  This is an issue only when deep sleep is disabled.
   if ((now - lastReport) > 60000 || lastReport == 0){
     lastReport = now;
     handleSensors();
@@ -425,6 +423,7 @@ void loop() {
     Serial.print("Loop Counter: ");
     Serial.println( ++loop_counter );
 
+    // Wait for the 3rd time through the loop so that we receive the DISABLE_SLEEP_STATE from MQTT
     if(loop_counter > 2){
     
       Serial.println("INFO: Closing the MQTT connection");

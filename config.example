@@ -78,9 +78,4 @@ const PROGMEM uint16_t CONFIG_SLEEPING_TIME_IN_SECONDS = 900; // 15 minutes x 60
 
 #define CONFIG_POWER_SOURCE <power_source> // Change to indicate the power source using the codes above.
 
-// Resistor value
-#define R220K 1
-#define R100K 2
-
-#define CONFIG_RESISTOR_VALUE  <resistor_value>  // Change to indicate the resistor in use. Best is to install a 220K resistor
 
